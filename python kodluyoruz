@@ -1,0 +1,40 @@
+# Noktaların Tanımlanması
+points = [(1, 2), (3, 4), (5, 6), (7, 8)]
+
+# Öklid Mesafesi İçin Bir Fonksiyon Yazma (math modülü kullanarak)
+import math
+def euclideanDistance_with_math(point1, point2):
+    return math.sqrt((point2[0] - point1[0])**2 + (point2[1] - point1[1])**2)
+
+# Öklid Mesafesi İçin Bir Fonksiyon Yazma (math modülü kullanmadan)
+def euclideanDistance_without_math(point1, point2):
+    return ((point2[0] - point1[0])**2 + (point2[1] - point1[1])**2)**0.5
+
+# Mesafelerin Hesaplanması (math modülü kullanarak)
+distances_with_math = []
+for i in range(len(points)):
+    for j in range(i + 1, len(points)):
+        distances_with_math.append(euclideanDistance_with_math(points[i], points[j]))
+
+# Mesafelerin Hesaplanması (math modülü kullanmadan)
+distances_without_math = []
+for i in range(len(points)):
+    for j in range(i + 1, len(points)):
+        distances_without_math.append(euclideanDistance_without_math(points[i], points[j]))
+
+# Minimum Mesafenin Bulunması
+min_distance_with_math = min(distances_with_math)
+min_distance_without_math = min(distances_without_math)
+
+print(f"Minimum mesafe (math modülü ile): {min_distance_with_math}")
+print(f"Minimum mesafe (math modülü olmadan): {min_distance_without_math}")
+
+# Fonksiyon ve döngülerle hesaplanan mesafeler (math modülü ile)
+print("Tüm mesafeler (math modülü ile):")
+for distance in distances_with_math:
+    print(distance)
+
+# Fonksiyon ve döngülerle hesaplanan mesafeler (math modülü olmadan)
+print("Tüm mesafeler (math modülü olmadan):")
+for distance in distances_without_math:
+    print(distance)
